@@ -1,0 +1,33 @@
+@import "sprite";
+@include sprites($spritesheet-sprites);
+
+//D:\work\frontend\src\style\partials
+
+//hover спрайта
+
+
+.day-night {
+  @include sprite($day-night);
+  &.active {
+    @include sprite($day-night-hover);
+  }
+}
+.parade{
+  @include sprite($parade);
+  &.active {
+    @include sprite($parade-hover);
+  }
+}
+.beside{
+  @include sprite($beside);
+  &.active {
+    @include sprite($beside-hover);
+  }
+}
+
+.slidbutt{
+  @include sprite($slidbutt);
+  &.active {
+    @include sprite($slidbutt-hover);
+  }
+}
