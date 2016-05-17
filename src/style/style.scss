@@ -11,8 +11,6 @@
 }
 
 
-
-
 $em-base: 18px;
 $akcent: #6b1838;
 
@@ -165,6 +163,7 @@ button {
   -moz-transition: all 0.7s ease 0s;
   -o-transition: all 0.7s ease 0s;
   transition: all 0.7s ease 0s;
+
   &.active{
     left: 0;
   }
@@ -1311,9 +1310,9 @@ header{
 
 
 .participants{
-  background: #fff url('../pic/design/participants-bg.jpg') 50% 100% no-repeat fixed;
-  //-webkit-background-size: cover;
-  //background-size: cover;
+  background: #fff url('../pic/design/participants-bg.jpg') 50% 50% no-repeat fixed;
+  -webkit-background-size: cover;
+  background-size: cover;
   //min-height: 1222px;
   overflow: hidden;
   min-height: 92.3vh;
@@ -1401,13 +1400,13 @@ header{
   // top: 294px;
   // left: 0;
   width: 100%;
-  padding: 157px 0 0;
+  padding: 57px 0 0;
 }
 .mortgage-support{
   width: 93%;
   background-color: rgba(246, 241, 230, 0.8);
   padding: 0 52px 0 0;
-  min-height: 51.2vh;
+  //min-height: 51.2vh;
   .h4{
     padding: 0 0 18px 53px;
   }
@@ -1768,11 +1767,15 @@ header{
     }
   }
 }
-
+// .fancybox-wrap{
+//   top: 0!important;
+// }
 .fancybox-overlay{
   background: #611130 url('../pic/design/popap-bg.png') 0 100% no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
+  position: fixed;
+  overflow: hidden !important;
 }
 .fancybox-skin{
   background-color: transparent;
@@ -1780,6 +1783,20 @@ header{
   -moz-box-shadow: none;
   box-shadow: none;
 }
+
+.fancybox-lock .fancybox-overlay{
+  overflow: hidden;
+}
+body{
+  &.ovh{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    overflow-x: hidden;
+    overflow-y: scroll !important;
+  }
+}
+
 .fancybox-opened {
   .fancybox-skin{
     background-color: transparent;
@@ -1792,6 +1809,14 @@ header{
 .wr-popap{
   display: none;
 
+}
+.wrappVideo{
+  //height: 77vh!important;
+}
+.wrappCamera{
+  //height: 77vh!important;
+  // position: fixed !important;
+  // top: 0;
 }
 
 
@@ -1887,6 +1912,7 @@ header{
   //width: 35px;
   //height: 65px;
   left: -50px;
+  z-index: 999;
 }
 .fancybox-next{
   //background-image: url(../pic/design/sprite.png);
@@ -1894,6 +1920,7 @@ header{
   //width: 35px;
   //height: 65px;
   right: -50px;
+  z-index: 999;
 }
 
 .scheme_block{
@@ -2132,7 +2159,7 @@ header{
     position: fixed;
     top: 65px;
     right: 14px;
-    z-index: 1;
+    z-index: 5;
   }
 }
 
@@ -2352,13 +2379,14 @@ header{
 }
 
 .corp-img{
-  padding : 0 0 16px;
+  padding : 0 0 10px;
   img{
 
   }
 }
 
 .corp-plan-cont{
+  padding: 0 0 10px;
   .item{
     width : 50%;
     //padding: 0 0 32px;

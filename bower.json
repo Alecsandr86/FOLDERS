@@ -22,6 +22,7 @@
     "bourbon": "^4.2.6",
     "normalize.sass": "^3.0.0",
     "css-hamburgers": "^0.5.0",
-    "bxslider-4": "^4.2.5"
+    "bxslider-4": "^4.2.5",
+    "jquery-touchswipe": "^1.6.16"
   }
 }

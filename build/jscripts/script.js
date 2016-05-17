@@ -31,7 +31,7 @@ $(document).ready(function(){
     function slidTime() {
         $(".lin-top-slider span").animate({"width":"0%"},0).animate({
             "width":"200%"
-        },3000,function () {
+        }, 4000 ,function () {
             $(".lin-top-slider span").animate({
                 "width":"0%"
             },0 ,slidTime())
@@ -42,50 +42,84 @@ $(document).ready(function(){
     // \загрузка\
 
 
+
+
+
+
     // Слайдеры
-    var slidOne = $('.bxslider').bxSlider({
+
+     var slidtwo = $('.slid-utp').bxSlider({
         pager: false,
-        pause:"3000",
+        infiniteLoop:true,
+        randomStart: true,
+        //auto:true,
+        //pause:"3000",
+        controls:false,
+        adaptiveHeight:true,
+        touchEnabled:false,
+
+    });
+
+
+
+     var slidone = $('.bxslider').bxSlider({
+        pager: false,
+        // auto:true,
+        //pause:"3000",
         controls: false,
         onSliderLoad: function(){
-            //alert('prev');
             $(".lin-top-slider span").animate({"width":"0"},0);
             slidTime();
         },
         onSlideAfter: function(){
-            //alert('next');
             $(".lin-top-slider span").animate({"width":"0"},0);
             slidTime();
+        },
+        onSlideNext:function(){
+          //slidOne.goToPrevSlide();
+          slidtwo.goToNextSlide();
+          //slidtwo.stopAuto();
+          return true;
+          slidTime();
+        },
+        onSlidePrev:function(){
+          //slidOne.goToNextSlide();
+          slidtwo.goToPrevSlide();
+          //slidtwo.stopAuto();
+          return true;
+          slidTime();
         }
     });
 
 
-    var slidTwo = $('.slid-utp').bxSlider({
-        pager: false,
-        pause:"3000",
-        controls:false,
-        adaptiveHeight:true,
-    });
-
-
     $('.slid-prev').bind('click', function () {
-        slidOne.goToPrevSlide();
-        slidTwo.goToPrevSlide();
-        slidTime();
+        slidone.goToPrevSlide();
+        slidtwo.goToPrevSlide();
+        return false;
+        //slidTime();
     });
 
     $('.slid-next').bind('click', function () {
-        slidOne.goToNextSlide();
-        slidTwo.goToNextSlide();
-        slidTime();
+        slidone.goToNextSlide(),
+        slidtwo.goToNextSlide();
+        return false;
+        //slidTime();
     });
 
 
-    $('.slid-utp').bxSlider({
-        pager: false,
-        auto:true,
-        pause:"3000",
-    });
+
+
+
+
+
+
+
+
+    // $('.slid-utp').bxSlider({
+    //     pager: false,
+    //     auto:true,
+    //     pause:"3000",
+    // });
 
     // $('.slid-next,.slid-prev').bind("click", function () {
     //     slidTime();
@@ -369,35 +403,131 @@ $(document).ready(function(){
 
     // fancybox
 
-    $(".link-popap").fancybox({
-        scrolling: "visible",
-        helpers : {
-            overlay: {
-                locked: false
-            }
+    $(".but-zoom").fancybox({
+        scrolling: "no",
+        wrapCSS:"galegeBottomTitle",
+        helpers		: {
+            title	: {
+                type : 'inside' ,
+                position: 'buttom'
+            },
+            // overlay: {
+            //     locked: false
+            // }
+            buttons : {}
+
         },
+        afterShow: function() {
+                  $('.fancybox-wrap').swipe({
+                      swipe : function(event, direction) {
+                          if (direction === 'left' || direction === 'up') {
+                              $.fancybox.prev( direction );
+                          } else {
+                              $.fancybox.next( direction );
+                          }
+                      }
+                  });
+
+              },
+
+              afterLoad : function() {
+              }
+
+
+
     });
 
-    $(".link-popap-map").fancybox({
-      scrolling: "visible",
+
+    $(".fancybox-camera").fancybox({
+       //infiniteLoop:true,
+        scrolling: "no",
+        wrapCSS:"wrappCamera",
+        // nextEffect  : 'fade',
+        // prevEffect  : 'fade',
+        padding     : 0,
+        margin      : 0,
+        // maxWidth: '607px',
+        // maxHeight:"448px",
         helpers : {
             title: {
                 type: 'inside',
                 position: 'top'
             },
-            overlay: {
-                locked: false
+        buttons : {}
+        },
+
+        afterShow   : addLinks1,
+        beforeClose : removeLinks1,
+        afterLoad : function() {
+        },
+
+
+    });
+
+    function addLinks1() {
+
+      $('.fancybox-wrap').swipe({
+          swipe : function(event, direction) {
+              if (direction === 'left' || direction === 'up') {
+                  $.fancybox.prev( direction );
+              } else {
+                  $.fancybox.next( direction );
+              }
+          }
+      });
+      $('body').addClass('ovh');
+        var list = $("#links");
+        if (!list.length) {
+            list = $('<ul id="links">');
+
+            for (var i = 0; i < this.group.length; i++) {
+                $('<li data-index="' + i + '"><a href="#"> камера ' + (i+1) + '</a></li>').click(function() { $.fancybox.jumpto( $(this).data('index'));}).appendTo( list );
             }
+
+            list.appendTo( '.fancybox-wrap' );
+        }
+
+        list.find('li').removeClass('active').eq( this.index ).addClass('active');
+
+    }
+
+    function removeLinks1() {
+        $("#links").remove();
+        $('body').removeClass('ovh');
+    }
+
+
+
+
+    $(".link-popap").fancybox({
+        scrolling: "no",
+        // helpers : {
+        //     overlay: {
+        //         locked: false
+        //     }
+        // },
+    });
+
+    $(".link-popap-map").fancybox({
+      scrolling: "no",
+        helpers : {
+            title: {
+                type: 'inside',
+                position: 'top'
+            },
+            // overlay: {
+            //     locked: false
+            // }
         },
     });
 
 
 
     $(".fancybox").fancybox({
-        scrolling: "visible",
+        scrolling: "no",
         wrapCSS:"wrappVideo",
-        nextEffect  : 'fade',
-        prevEffect  : 'fade',
+        // nextEffect  : 'none',
+        // prevEffect  : 'none',
         padding     : 0,
         margin      : [15, 15, 40, 15],
         maxWidth: '640px',
@@ -407,16 +537,31 @@ $(document).ready(function(){
                 type: 'inside',
                 position: 'top'
             },
-            overlay: {
-                locked: false
-            }
+            buttons : {}
+            // overlay: {
+            //     locked: false
+            // }
         },
         afterShow  : addLinks,
-        beforeClose : removeLinks
+        beforeClose : removeLinks,
+        afterLoad : function() {
+        }
 
     });
 
     function addLinks() {
+
+      $('.fancybox-wrap').swipe({
+          swipe : function(event, direction) {
+              if (direction === 'left' || direction === 'up') {
+                  $.fancybox.prev( direction );
+              } else {
+                  $.fancybox.next( direction );
+              }
+          }
+      });
+      $("body").addClass("ovh");
+
         var list = $("#links");
         if (!list.length) {
             list = $('<ul id="links">');
@@ -433,66 +578,12 @@ $(document).ready(function(){
 
     function removeLinks() {
         $("#links").remove();
-    }
-
-
-    $(".fancybox-camera").fancybox({
-        scrolling: "visible",
-        wrapCSS:"wrappVideo",
-        nextEffect  : 'fade',
-        prevEffect  : 'fade',
-        padding     : 0,
-        margin      : [15, 15, 40, 15],
-        maxWidth: '607px',
-        maxHeight:"448px",
-        helpers : {
-            title: {
-                type: 'inside',
-                position: 'top'
-            },
-            overlay: {
-                locked: false
-            }
-        },
-        afterShow   : addLinks1,
-        beforeClose : removeLinks1
-
-    });
-
-    function addLinks1() {
-        var list = $("#links");
-        if (!list.length) {
-            list = $('<ul id="links">');
-
-            for (var i = 0; i < this.group.length; i++) {
-                $('<li data-index="' + i + '"><a href="#"> камера ' + (i+1) + '</a></li>').click(function() { $.fancybox.jumpto( $(this).data('index'));}).appendTo( list );
-            }
-
-            list.appendTo( '.fancybox-wrap' );
-        }
-
-        list.find('li').removeClass('active').eq( this.index ).addClass('active');
-    }
-
-    function removeLinks1() {
-        $("#links").remove();
+        $("body").removeClass("ovh");
     }
 
 
 
-    $(".but-zoom").fancybox({
-        scrolling: "visible",
-        wrapCSS:"galegeBottomTitle",
-        helpers		: {
-            title	: {
-                type : 'inside' ,
-                position: 'buttom'
-            },
-            overlay: {
-                locked: false
-            }
-        }
-    });
+
 
 
 
