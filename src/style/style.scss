@@ -300,7 +300,6 @@ button {
     display: block;
     height: 8px;
     width: 0%;
-    //background-color: #fddfd5;
     background: #fddfd5;
     background: -moz-linear-gradient(left,  #fddfd5 0%, #a9446a 100%);
     background: -webkit-linear-gradient(left,  #fddfd5 0%,#a9446a 100%);
@@ -310,7 +309,6 @@ button {
   }
   .bx-wrapper{
     height: 592px;
-    //overflow: hidden;
     position: relative;
   }
 
@@ -893,8 +891,6 @@ header{
 
 
 .tabs {
-  //margin-left: -25px;
-  //margin-right: -25px;
   margin-top: 24px;
   position: relative;
   max-width: none;
@@ -1132,7 +1128,6 @@ header{
       }
     }
     td{
-      //width: 85px;
       padding: 9px 0 9px 10px;
       border-right: 1px solid #e9dfd2;
       border-top: 1px solid #e9dfd2;
@@ -1148,7 +1143,6 @@ header{
     &.table-fix{
       position: fixed;
       top: 58px;
-      //left: 0;
       width: 100%;
     }
     tr{
@@ -1310,19 +1304,26 @@ header{
 
 
 .participants{
-  background: #fff url('../pic/design/participants-bg.jpg') 50% 50% no-repeat fixed;
-  -webkit-background-size: cover;
-  background-size: cover;
-  //min-height: 1222px;
-  overflow: hidden;
-  min-height: 92.3vh;
-  //padding-bottom: 20px;
+  background: #fff url('../pic/design/participants-bg.jpg') no-repeat right top;
+
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ -o-background-size: cover;
+ background-size: cover;
+
+  .img-par{
+      overflow: auto;
+      min-height: 100vh;
+      min-height: 100%;
+  }
+
 }
 
 
 
 
 .acordion{
+  padding: 1px;
   .item{
     margin: 22px 0 13px;
     background-color: lighten(#f4eddc, 5%);
@@ -1386,7 +1387,6 @@ header{
   -webkit-background-size: cover;
   background-size: cover;
   min-height: 92.3vh;
-  //min-height: 570px;
   position: relative;
 }
 
@@ -1396,9 +1396,6 @@ header{
   width: 300px;
 }
 .wrapp-mort-supp{
-  // position: absolute;
-  // top: 294px;
-  // left: 0;
   width: 100%;
   padding: 57px 0 0;
 }
@@ -1406,14 +1403,12 @@ header{
   width: 93%;
   background-color: rgba(246, 241, 230, 0.8);
   padding: 0 52px 0 0;
-  //min-height: 51.2vh;
   .h4{
     padding: 0 0 18px 53px;
   }
 }
 
 .mort-acord{
-  //padding: 0 0 25px;
   overflow: hidden;
   .item{
     margin-bottom: 24px;
@@ -1436,9 +1431,7 @@ header{
         -o-transform: rotate(0deg);
         transform: rotate(0deg);
       }
-      //.content{
-      //  display: block;
-      //}
+
     }
     .head{
       background-color: #6b1838;
@@ -1501,9 +1494,7 @@ header{
   width: 100%;
   margin-top: 17px;
   position: relative;
-  //height: 100%;
   height: 64vh;
-  //max-height: 570px;
   .map-pl-1{
     position: absolute;
     top: 44%;
@@ -1566,7 +1557,6 @@ header{
 
 
 .location{
-  //min-height: 950px;
   height: 92.3vh;
   width: 100%;
   position: relative;
@@ -1667,7 +1657,6 @@ header{
   background: url('../pic/design/documentation-bg.jpg') 0 0 no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
-  //min-height: 948px;
   min-height: 92.3vh;
   h2{
     color: #f6efe0;
@@ -1716,7 +1705,6 @@ header{
   background: url('../pic/design/netting-bg.jpg') 0 0 no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
-  //min-height: 950px;
   min-height: 92.3vh;
   .h2{
     line-height: 60px;
@@ -1767,21 +1755,23 @@ header{
     }
   }
 }
-// .fancybox-wrap{
-//   top: 0!important;
-// }
+.fancybox-wrap{
+
+}
 .fancybox-overlay{
   background: #611130 url('../pic/design/popap-bg.png') 0 100% no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
   position: fixed;
   overflow: hidden !important;
+  height: 100vh!important;
 }
 .fancybox-skin{
   background-color: transparent;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
+
 }
 
 .fancybox-lock .fancybox-overlay{
@@ -1790,7 +1780,6 @@ header{
 body{
   &.ovh{
     width: 100%;
-    height: 100vh;
     position: fixed;
     overflow-x: hidden;
     overflow-y: scroll !important;
@@ -1811,12 +1800,10 @@ body{
 
 }
 .wrappVideo{
-  //height: 77vh!important;
+
 }
 .wrappCamera{
-  //height: 77vh!important;
-  // position: fixed !important;
-  // top: 0;
+
 }
 
 
@@ -1887,19 +1874,15 @@ body{
   font-size: rem(64);
   font-family: $BebasNeue;
   font-weight: normal;
-  //padding: 0 0 8px 10%;
+
   padding: 0 0 20px 23%;
   line-height: 60px;
 }
 
 .fancybox-close{
-  //background-image: url(../pic/design/sprite.png);
-  //background-position: 0px -399px;
-  //width: 40px;
-  //height: 40px;
   position: fixed;
   top: 13px;
-  right: 13px;
+  right: 23px;
 }
 
 .fancybox-nav{
@@ -1907,18 +1890,10 @@ body{
   margin-top: -32.5px;
 }
 .fancybox-prev{
-  //background-image: url(../pic/design/sprite.png);
-  //background-position: 0px -1659px;
-  //width: 35px;
-  //height: 65px;
   left: -50px;
   z-index: 999;
 }
 .fancybox-next{
-  //background-image: url(../pic/design/sprite.png);
-  //background-position: 0px -1480px;
-  //width: 35px;
-  //height: 65px;
   right: -50px;
   z-index: 999;
 }
@@ -1926,7 +1901,6 @@ body{
 .scheme_block{
   overflow: hidden;
   svg{
-    //transform: scale(0.5, 0.5)!important;
     position: relative;
     left: -230px;
   }
@@ -1982,7 +1956,7 @@ body{
 }
 
 #links li.active a {
-  //background-color: white;
+
 }
 
 // пример
@@ -2033,8 +2007,6 @@ body{
     .date{
       background-color : #e4dbc5;
       background: url('../pic/design/box-date.png') 0 0 no-repeat;
-      // -webkit-background-size: cover;
-      // background-size: cover;
       color: #361421;
       padding: 2px 14px;
     }
@@ -2138,8 +2110,6 @@ body{
   .date{
     background-color :  #822649;
     background: url('../pic/design/box-date2.png') 0 0 no-repeat;
-    // -webkit-background-size: cover;
-    // background-size: cover;
     color: #ffffff;
     padding: 2px 14px;
   }
@@ -2274,12 +2244,10 @@ body{
 .pages-404{
   text-align : center;
   color : #fff;
-  //min-height: 948px;
   height: 92.3vh;
   background :url('../pic/design/bg-404.jpg') 0 0 no-repeat;
   -webkit-background-size : cover;
   background-size         : cover;
-  //padding : 74px 0;
   h1{
     color : #fbf7ee;
     font-size : rem(500);
@@ -2513,12 +2481,6 @@ body{
 
 
 //************ ПЛАВНАЯ АНИМАЦИЯ ***********//
-//@include transition(all 0.5s $ease-out-cubic);
-
-//-webkit-transition: all 0.7s ease 0s;
-//-moz-transition: all 0.7s ease 0s;
-//-o-transition: all 0.7s ease 0s;
-//transition: all 0.7s ease 0s;
 
 /////////////////////////////////////////
 @import "partials/media";
